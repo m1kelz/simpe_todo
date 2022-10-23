@@ -39,7 +39,7 @@ class _ToDoListMainWidgetState extends State<ToDoListMainWidget> {
                   SearchBox(),
                   Expanded(
                     child: ListView(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       children: [
                         Container(
                           margin: const EdgeInsets.only(top: 30, bottom: 20),
@@ -84,7 +84,7 @@ class _ToDoListMainWidgetState extends State<ToDoListMainWidget> {
                               spreadRadius: 0.0,
                             ),
                           ],
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(25),
                         ),
                         child: TextField(
                           controller: _todoController,
@@ -105,10 +105,8 @@ class _ToDoListMainWidgetState extends State<ToDoListMainWidget> {
                               _addToDoItem(_todoController.text);
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: themeBlue,
-                              minimumSize: const Size(60, 60),
-                              elevation: 10,
-                            ),
+                                shape: CircleBorder(),
+                                padding: EdgeInsets.all(7)),
                             child: const Text(
                               '+',
                               style: TextStyle(
@@ -187,8 +185,13 @@ class _ToDoListMainWidgetState extends State<ToDoListMainWidget> {
     return AppBar(
       title: const Text('Список дел'),
       centerTitle: true,
+      backgroundColor: themeBackgroundColor,
+      elevation: 0,
       flexibleSpace: Container(
         decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(40),
+                bottomRight: Radius.circular(40)),
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
